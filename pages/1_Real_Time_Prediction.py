@@ -9,14 +9,14 @@ st.subheader('Real-Time Attendance System')
 
 
 # Retrive the data from Redis Database
-with st.spinner('Retriving Data from Redis Db..'):
+with st.spinner('Retriving Data from  Db..'):
     redis_face_db = face_rec.retrive_data(name='academy:register')
     st.dataframe(redis_face_db)
 
-st.success('Data sucessfully retrived from Redis')
+st.success('Data sucessfully retrived from database')
 
 # time
-waitTime = 5 # time in sec
+waitTime = 10 # time in sec
 setTime = time.time() 
 realtimepred = face_rec.RealTimePred()# real time prediction class
 
@@ -36,7 +36,7 @@ def video_frame_callback(frame):
     if difftime >= waitTime:
         realtimepred.saveLogs_redis()
         setTime = time.time() #reset time
-        print('Save data to redis database')
+        print('Save data to  database')
     
     return av.VideoFrame.from_ndarray(pred_img, format="bgr24") 
 
